@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<% title @movie.title.upcase + "- KINOPLEX" %>
+
+		<div class="col-12 movieshow">
+       <div class="col-6 movieshow">
+       	<%= image_tag @movie.image_url %>
+       </div>
+       <div class="col-6 movieshow">
+       <h1><%= @movie.title %></h1>
+        <p><%= @movie.desc %></p>  
+      <% @movie.showings.each do |showing| %>
+        <p><%= showing.screening %></p>
+      <% end -%>     
+        </div>
+        </div>
+        <div class="col-6">
+        	<a href="" class="col-12 button">REZERWUJ BILET</a>
+        </div>
+
+
+

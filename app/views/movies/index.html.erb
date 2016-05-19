@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<% title "FILMY - KINOPLEX" %>
+<div class="row">
+<h1>NA EKRANACH</h1>
+
+
+
+
+    <% @movies.each do |movie| %>
+      <%= link_to movie do%>
+      <div class="col-4 movie">
+      <img><%= image_tag movie.image_url(:thumb) %></img>
+        <h1><%= movie.title %></h1>
+        <p><%= movie.desc %></p>
+
+        
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+

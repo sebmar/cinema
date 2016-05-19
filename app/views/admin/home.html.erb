@@ -1,0 +1,47 @@
+<% title "PANEL ADMINISTRATORA" %>
+<table>
+<h2>filmy</h2>
+<%= link_to 'Dodaj film', new_movie_path %>
+<% Movie.all.each do |movie| %>
+<tr>
+        <td><%= movie.title %></td>
+        <td><%= link_to 'Show', movie %></td>
+        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Dodaj seans', {:controller => 'showings', :action => 'new', :movie_id => movie.id} %></td>
+    </tr>    
+      <% end %>
+      </table>
+<h2>aktualności</h2>
+<table>
+<% News.all.each do |news| %>
+<tr>
+        <td><%= news.title %></td>
+        <td><%= link_to 'Show', news %></td>
+        <td><%= link_to 'Edit', edit_news_path(news) %></td>
+        <td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>    
+      <% end %>
+      </table>
+      <h2>sale</h2>
+      <table>
+<% Screen.all.each do |screen| %>
+<tr>
+        <td><%= screen.name %></td>
+        <td><%= link_to 'Show', screen %></td>
+        <td><%= link_to 'Edit', edit_screen_path(screen) %></td>
+        <td><%= link_to 'Destroy', screen, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>    
+      <% end %>
+      </table>
+            <h2>seanse</h2>
+      <table>
+<% Showing.all.each do |showing| %>
+<tr>
+        <td><%= showing.screening %></td>
+        <td><%= link_to 'Show', showing %></td>
+        <td><%= link_to 'Edit', edit_showing_path(showing) %></td>
+        <td><%= link_to 'Destroy', showing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>    
+      <% end %>
+      </table>

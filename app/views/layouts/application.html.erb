@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title) %></title>
+  <%= stylesheet_link_tag    'resp', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="header">
+<h1>KINOPLEX</h1>
+</div>
+
+<div class="row">
+
+<div class="col-3 menu">
+<ul>
+<li><a href="/movies">REPERTUAR</a></li>
+</ul>
+</div>
+<div class="col-3 menu">
+<ul>
+<li><a href="">ZAPOWIEDZI</a></li>
+</ul>
+</div>
+<div class="col-3 menu">
+<ul>
+<li><a href="/news">AKTUALNOŚCI</a></li>
+</ul>
+</div>
+<div class="col-3 menulast">
+<ul>
+<li><a href="/bookings/new">REZERWACJA</a></li>
+</ul>
+</div>
+</div>
+<%= yield %>
+
+</body>
+<footer>
+<div class="col-12 footer">
+<div class="col-4">
+<a href="">O nas</a>
+<a href="">FAQ</a>
+<a href="">Pomoc</a>
+</div>
+<div class="col-4">
+<a href="/admin">Panel Administratora</a>
+</div>
+<div class="col-4">
+<a href="">Ważne informacje w stopce</a>
+</div>
+</div>
+</footer>
+</html>

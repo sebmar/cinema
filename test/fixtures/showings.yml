@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  screening: 2016-05-17 19:23:40
+
+two:
+  screening: 2016-05-17 19:23:40
