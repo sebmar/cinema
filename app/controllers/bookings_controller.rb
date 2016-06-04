@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
+
   # GET /bookings
   # GET /bookings.json
   def index
@@ -14,7 +15,8 @@ class BookingsController < ApplicationController
 
   # GET /bookings/new
   def new
-    @booking = Booking.new
+    @showing = Showing.find(params[:showing_id])
+    @booking = @showing.bookings.build
   end
 
   # GET /bookings/1/edit
@@ -24,11 +26,12 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
-    @booking = Booking.new(booking_params)
+    @showing = Showing.find(params[:showing_id])
+    @booking = @showing.bookings.build(params[:booking])
 
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+        format.html { redirect_to :controller => 'reservedseats', :action => 'new', :booking_id => @booking.id, :showing_id => @booking.showing.id }
         format.json { render :show, status: :created, location: @booking }
       else
         format.html { render :new }
@@ -69,6 +72,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:details, :number)
+      params.require(:booking, :showing).permit(:name, :lastname, :phonenumber, :showing_id)
     end
 end

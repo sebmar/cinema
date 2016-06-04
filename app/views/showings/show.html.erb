@@ -2,8 +2,14 @@
 
 <p>
   <strong>Screening:</strong>
+  <%= @showing.movie.title %>
   <%= @showing.screening %>
+  <%= @showing.screen.name %>
+  <% @showing.screen.seats.order(row: :asc, number: :asc).each do |seat| %>
+
+        <%= seat.row %>;<%= seat.number %>
+        
+      <% end -%>   
 </p>
 
-<%= link_to 'Edit', edit_showing_path(@showing) %> |
-<%= link_to 'Back', showings_path %>
+

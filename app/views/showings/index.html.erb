@@ -1,27 +1,14 @@
 <p id="notice"><%= notice %></p>
+<% title "NADCHODZĄCE SEANSE" %>
 
-<h1>Listing Showings</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Screening</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+
+
     <% @showings.each do |showing| %>
-      <tr>
-        <td><%= showing.screening %></td>
-        <td><%= link_to 'Show', showing %></td>
-        <td><%= link_to 'Edit', edit_showing_path(showing) %></td>
-        <td><%= link_to 'Destroy', showing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      
+        <%= showing.movie.title %>
+        <% end %>
 
 <br>
 
-<%= link_to 'New Showing', new_showing_path %>

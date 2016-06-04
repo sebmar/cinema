@@ -1,0 +1,2 @@
+module ReservedseatsHelper
+end

@@ -1,4 +1,4 @@
-<%= form_for(@seat) do |f| %>
+<%= form_for([@screen,@seat]) do |f| %>
   <% if @seat.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@seat.errors.count, "error") %> prohibited this seat from being saved:</h2>
@@ -13,11 +13,12 @@
 
   <div class="field">
     <%= f.label :row %><br>
-    <%= f.text_field :row %>
+    <%= f.number_field :row %>
+
   </div>
   <div class="field">
     <%= f.label :number %><br>
-    <%= f.text_field :number %>
+    <%= f.number_field :number %>
   </div>
   <div class="actions">
     <%= f.submit %>

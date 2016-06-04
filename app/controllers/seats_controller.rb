@@ -14,7 +14,8 @@ class SeatsController < ApplicationController
 
   # GET /seats/new
   def new
-    @seat = Seat.new
+    @screen = Screen.find(params[:screen_id]) 
+    @seat = @screen.seats.build
   end
 
   # GET /seats/1/edit
@@ -24,11 +25,13 @@ class SeatsController < ApplicationController
   # POST /seats
   # POST /seats.json
   def create
-    @seat = Seat.new(seat_params)
-
+    @screen = Screen.find(params[:screen_id])
+    @seat = @screen.seats.build(params[:seat])
+    @seat.row = params[:seat][:row].to_i
+    @seat.number = params[:seat][:number].to_i
     respond_to do |format|
       if @seat.save
-        format.html { redirect_to @seat, notice: 'Seat was successfully created.' }
+        format.html { redirect_to '/admin', notice: 'Seat was successfully created.' }
         format.json { render :show, status: :created, location: @seat }
       else
         format.html { render :new }
@@ -69,6 +72,6 @@ class SeatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seat_params
-      params.require(:seat).permit(:row, :number)
+      params.require(:seat, :screen).permit(:row, :number, :screen_id)
     end
 end

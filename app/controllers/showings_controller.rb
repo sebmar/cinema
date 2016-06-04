@@ -4,13 +4,15 @@ class ShowingsController < ApplicationController
   # GET /showings
   # GET /showings.json
   def index
-    @showings = Showing.all
+    @showings = Showing.where('screening BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.next_month).all
   end
 
   # GET /showings/1
   # GET /showings/1.json
   def show
   end
+
+
 
   # GET /showings/new
   def new

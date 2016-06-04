@@ -11,18 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518152617) do
+ActiveRecord::Schema.define(version: 20160603164830) do
 
   create_table "bookings", force: :cascade do |t|
-    t.text     "details"
-    t.string   "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "showing_id"
-    t.integer  "seat_id"
+    t.string   "name"
+    t.string   "lastname"
+    t.string   "phonenumber"
   end
 
-  add_index "bookings", ["seat_id"], name: "index_bookings_on_seat_id"
   add_index "bookings", ["showing_id"], name: "index_bookings_on_showing_id"
 
   create_table "movies", force: :cascade do |t|
@@ -40,6 +39,18 @@ ActiveRecord::Schema.define(version: 20160518152617) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reservedseats", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "seat_id"
+    t.integer  "booking_id"
+    t.integer  "showing_id"
+  end
+
+  add_index "reservedseats", ["booking_id"], name: "index_reservedseats_on_booking_id"
+  add_index "reservedseats", ["seat_id"], name: "index_reservedseats_on_seat_id"
+  add_index "reservedseats", ["showing_id"], name: "index_reservedseats_on_showing_id"
+
   create_table "screens", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -47,8 +58,8 @@ ActiveRecord::Schema.define(version: 20160518152617) do
   end
 
   create_table "seats", force: :cascade do |t|
-    t.string   "row"
-    t.string   "number"
+    t.integer  "row"
+    t.integer  "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "screen_id"

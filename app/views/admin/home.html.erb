@@ -31,6 +31,7 @@
         <td><%= link_to 'Show', screen %></td>
         <td><%= link_to 'Edit', edit_screen_path(screen) %></td>
         <td><%= link_to 'Destroy', screen, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Dodaj siedzenie', {:controller => 'seats', :action => 'new', :screen_id => screen.id} %></td>
     </tr>    
       <% end %>
       </table>

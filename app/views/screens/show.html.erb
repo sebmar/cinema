@@ -4,6 +4,11 @@
   <strong>Name:</strong>
   <%= @screen.name %>
 </p>
+      <% @screen.seats.order(row: :asc, number: :asc).each do |seat| %>
+
+        <%= seat.row %>;<%= seat.number %>
+        
+      <% end -%>   
 
 <%= link_to 'Edit', edit_screen_path(@screen) %> |
 <%= link_to 'Back', screens_path %>

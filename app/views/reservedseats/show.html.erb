@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Seat:</strong>
+  <%= @reservedseat.seat_id %>
+</p>
+
+<p>
+  <strong>Booking:</strong>
+  <%= @reservedseat.booking_id %>
+</p>
+
+<p>
+  <strong>Showing:</strong>
+  <%= @reservedseat.showing_id %>
+</p>
+<%= @reservedseat.booking.name %>
+<%= @reservedseat.booking.lastname %>
+<%= @reservedseat.booking.phonenumber %>
+<%= @reservedseat.showing.movie.title %>
+<%= @reservedseat.showing.screening.strftime("%m/%d %H:%M ")+ @reservedseat.showing.screen.name %>

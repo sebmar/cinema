@@ -1,5 +1,6 @@
-<h1>New Booking</h1>
+<% title "REZERWUJ BILET "+@showing.movie.title+"-"+@showing.screening.strftime("%m/%d %H:%M") %>
+
 
 <%= render 'form' %>
 
-<%= link_to 'Back', bookings_path %>
+

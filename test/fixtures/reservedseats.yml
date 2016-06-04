@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seat_id: 
+  booking_id: 
+  showing_id: 
+
+two:
+  seat_id: 
+  booking_id: 
+  showing_id: 

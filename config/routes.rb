@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
+  
   get 'admin' => 'admin#home'
-
-  resources :bookings
-  resources :showings
+  resources :reservedseats
+  resources :bookings do
+    resources :reservedseats
+  end
+  resources :showings do
+    resources :bookings
+  end
   resources :seats
-  resources :screens
+  resources :screens do
+    resources :seats
+  end
   resources :movies do
     resources :showings
   end
