@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160603164830) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bookings", force: :cascade do |t|
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20160603164830) do
     t.string   "phonenumber"
   end
 
-  add_index "bookings", ["showing_id"], name: "index_bookings_on_showing_id"
+  add_index "bookings", ["showing_id"], name: "index_bookings_on_showing_id", using: :btree
 
   create_table "movies", force: :cascade do |t|
     t.string   "title"
@@ -47,9 +50,9 @@ ActiveRecord::Schema.define(version: 20160603164830) do
     t.integer  "showing_id"
   end
 
-  add_index "reservedseats", ["booking_id"], name: "index_reservedseats_on_booking_id"
-  add_index "reservedseats", ["seat_id"], name: "index_reservedseats_on_seat_id"
-  add_index "reservedseats", ["showing_id"], name: "index_reservedseats_on_showing_id"
+  add_index "reservedseats", ["booking_id"], name: "index_reservedseats_on_booking_id", using: :btree
+  add_index "reservedseats", ["seat_id"], name: "index_reservedseats_on_seat_id", using: :btree
+  add_index "reservedseats", ["showing_id"], name: "index_reservedseats_on_showing_id", using: :btree
 
   create_table "screens", force: :cascade do |t|
     t.string   "name"
@@ -65,7 +68,7 @@ ActiveRecord::Schema.define(version: 20160603164830) do
     t.integer  "screen_id"
   end
 
-  add_index "seats", ["screen_id"], name: "index_seats_on_screen_id"
+  add_index "seats", ["screen_id"], name: "index_seats_on_screen_id", using: :btree
 
   create_table "showings", force: :cascade do |t|
     t.datetime "screening"
@@ -75,7 +78,7 @@ ActiveRecord::Schema.define(version: 20160603164830) do
     t.integer  "screen_id"
   end
 
-  add_index "showings", ["movie_id"], name: "index_showings_on_movie_id"
-  add_index "showings", ["screen_id"], name: "index_showings_on_screen_id"
+  add_index "showings", ["movie_id"], name: "index_showings_on_movie_id", using: :btree
+  add_index "showings", ["screen_id"], name: "index_showings_on_screen_id", using: :btree
 
 end
